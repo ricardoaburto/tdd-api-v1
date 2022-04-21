@@ -1,0 +1,19 @@
+{
+  "name": "api-tdd",
+  "version": "1.0.0",
+  "description": "Api product",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ricardoaburto/tdd-api-v1.git"
+  },
+  "author": "Ricardo Andrés Aburto Jara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardoaburto/tdd-api-v1/issues"
+  },
+  "homepage": "https://github.com/ricardoaburto/tdd-api-v1#readme"
+}
