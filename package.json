@@ -4,7 +4,10 @@
   "description": "Api product",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/server",
+    "dev": "nodemon ./bin/server",
+    "test": "jest",
+    "coverage": "jest --coverage --coverageDirectory=output/coverage/jest "
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/ricardoaburto/tdd-api-v1/issues"
   },
-  "homepage": "https://github.com/ricardoaburto/tdd-api-v1#readme"
+  "homepage": "https://github.com/ricardoaburto/tdd-api-v1#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.8",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
+  }
 }
