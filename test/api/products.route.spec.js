@@ -61,14 +61,32 @@ describe("Pruebas sobre la API de products", () => {
       expect(response.body._id).toBeDefined();
       expect(response.body.name).toBe(newProduct.name);
     });
+  });
 
-    it("Error en la inserción", async () => {
-      const response = await request(app)
-        .post("/api/products")
-        .send(wrongProduct);
+  describe("GET /api/products/search/nada", () => {
+    let response;
+    beforeEach(async () => {
+      response = await request(app).get("/api/products/search/nada").send();
+    });
 
-      expect(response.status).toBe(500);
-      expect(response.body.error).toBeDefined();
+    it("La ruta funciona", async () => {
+      expect(response.status).toBe(200);
+      expect(response.headers["content-type"]).toContain("json");
+    });
+
+    it("La petición nos devuelve un array de products", async () => {
+      expect(response.body).toBeInstanceOf(Array);
+    });
+  });
+
+  describe("GET /api/products/search/desc/re", () => {
+    let response;
+    beforeEach(async () => {
+      response = await request(app).get("/api/products/search/desc/re").send();
+    });
+
+    it("La petición nos devuelve un objecto ", async () => {
+      expect(response.body).toEqual({ mesagge: "not valid" });
     });
   });
 });
