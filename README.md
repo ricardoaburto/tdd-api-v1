@@ -1,4 +1,4 @@
-# API TDD
+# API RUN
 
 ```
 1. $ docker-compose up -d
@@ -38,10 +38,3 @@ Body
 
 **GET be Id**
 http://localhost:3000/api/products/:productId
-
-# INSTALL
-
-```
-$ docker-compose up -d
-
-```
