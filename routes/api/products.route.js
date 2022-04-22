@@ -53,6 +53,15 @@ router.get("/search/desc/:key", async (req, res) => {
   }
 });
 
+router.get("/:productId", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.productId);
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: "Ha ocurrido un error" });
+  }
+});
+
 function palindromeChecker(str, req) {
   const newStr = str.replace(/[\W_]/g, "").toLowerCase();
   const strReversed = newStr.split("").reverse().join("");

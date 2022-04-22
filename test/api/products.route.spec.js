@@ -6,7 +6,9 @@ const Product = require("../../models/Product.model");
 
 describe("Pruebas sobre la API de products", () => {
   beforeAll(async () => {
-    await mongoose.connect("mongodb://localhost:27017");
+    await mongoose.connect(
+      "mongodb://root:123456@mongodb:27017/mongo_db?authSource=admin"
+    );
   });
 
   afterAll(async () => {
@@ -79,14 +81,34 @@ describe("Pruebas sobre la API de products", () => {
     });
   });
 
-  describe("GET /api/products/search/desc/re", () => {
+  describe("GET /api/products/search/desc/a", () => {
     let response;
     beforeEach(async () => {
-      response = await request(app).get("/api/products/search/desc/re").send();
+      response = await request(app).get("/api/products/search/desc/a").send();
     });
 
     it("La petición nos devuelve un objecto ", async () => {
       expect(response.body).toEqual({ mesagge: "not valid" });
+    });
+  });
+
+  describe("GET /api/products/productId", () => {
+    it("La ruta funcione", async () => {
+      response = await request(app).post("/api/products").send({
+        name: "Peras",
+        description: "Prueba de peras",
+        brand: "Lider",
+        price: 20000,
+        discount: 0,
+        total: 20000,
+      });
+
+      data = await request(app)
+        .get("/api/products/" + response.body._id)
+        .send();
+
+      expect(response.status).toBe(200);
+      expect(response.headers["content-type"]).toContain("json");
     });
   });
 });
